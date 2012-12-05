@@ -20,3 +20,6 @@ Usage
 -----
 
     $ md2pdf some-font.ttf some-document.md
+
+some-font.ttf like /Library/Fonts/AppleGothic.ttf
+
