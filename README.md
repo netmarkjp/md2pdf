@@ -19,4 +19,4 @@ Installation
 Usage
 -----
 
-    $ md2pdf some-document.md
+    $ md2pdf some-font.ttf some-document.md

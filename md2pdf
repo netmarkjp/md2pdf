@@ -1,19 +1,40 @@
 #!/usr/bin/env python
-# The world's worst code, ever, all in one place! \o/ \o/ \o/
+#coding: utf-8
 import markdown2
 import sys
 import os
+import codecs
 
-if len(sys.argv) > 1:
-  file = sys.argv[1]
+if len(sys.argv) > 2:
+  font_file = sys.argv[1]
+  file = sys.argv[2]
   md = open(file, 'r').read()
   htmlFile = os.path.splitext(file)[0] + ".html"
-  html = open(htmlFile, 'w')
-  html.write(markdown2.markdown(md))
+  html = codecs.open(htmlFile, 'w', 'utf_8')
+  html_source="""
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style>
+@font-face {
+    font-family: Helvetica;
+    src: url("%(font_file)s");
+}
+html {
+    font-family: Helvetica;
+}
+</style>
+</head>
+<body>
+%(body)s
+</body>
+</html>
+"""%({"font_file":font_file, "body":markdown2.markdown(md)})
+  html.write(html_source)
   html.close()
   os.system("xhtml2pdf %s" % htmlFile)
   os.remove(htmlFile)
 
   print("PDF Conversion successful")
 else:
-  print("Usage: md2pdf markdown_file.md")
+  print("Usage: md2pdf font_file.ttf markdown_file.md")
