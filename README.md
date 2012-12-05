@@ -12,7 +12,7 @@ Requirements
 Installation
 ------------
 
-    $ git clone git://github.com/joequery/md2pdf.git
+    $ git clone git://github.com/netmarkjp/md2pdf.git
     $ cd md2pdf
     $ sudo python setup.py install
 
