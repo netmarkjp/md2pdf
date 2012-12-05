@@ -32,7 +32,7 @@ html {
 """%({"font_file":font_file, "body":markdown2.markdown(md)})
   html.write(html_source)
   html.close()
-  os.system("xhtml2pdf %s" % htmlFile)
+  os.system("xhtml2pdf \"%s\"" % htmlFile)
   os.remove(htmlFile)
 
   print("PDF Conversion successful")
